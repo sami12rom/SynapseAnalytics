@@ -1,0 +1,35 @@
+{
+	"name": "Dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSynapseAnalyticsTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Select1"
+				},
+				{
+					"name": "Sort1"
+				}
+			],
+			"script": "source(output(\n\t\tshow_id as string,\n\t\ttype as string,\n\t\ttitle as string,\n\t\tdirector as string,\n\t\tcast as string,\n\t\tcountry as string,\n\t\tdate_added as string,\n\t\trelease_year as string,\n\t\trating as string,\n\t\tduration as string,\n\t\tlisted_in as string,\n\t\t{description;;} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 select(mapColumn(\n\t\tshow_id,\n\t\ttype,\n\t\ttitle,\n\t\tdirector,\n\t\tcast,\n\t\tcountry,\n\t\tdate_added,\n\t\trelease_year,\n\t\trating,\n\t\tduration,\n\t\tlisted_in,\n\t\tdescription = {description;;}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nSelect1 sort(asc(show_id, true)) ~> Sort1\nSort1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}
