@@ -1,0 +1,16 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "SELECT TOP (100) [col1]\n FROM [dbo].[Table]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "LUISA",
+				"databaseName": "LUISA"
+			}
+		},
+		"type": "SqlQuery"
+	}
+}
