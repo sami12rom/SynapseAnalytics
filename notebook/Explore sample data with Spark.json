@@ -4,7 +4,7 @@
 		"nbformat": 4,
 		"nbformat_minor": 2,
 		"bigDataPool": {
-			"referenceName": "SampleSpark",
+			"referenceName": "SampleSpark1",
 			"type": "BigDataPoolReference"
 		},
 		"sessionProperties": {
@@ -32,10 +32,10 @@
 				"name": "python"
 			},
 			"a365ComputeOptions": {
-				"id": "/subscriptions/611884b3-cca6-4214-9ec6-f90de47a3d79/resourceGroups/Trial20/providers/Microsoft.Synapse/workspaces/synapseanalytics12/bigDataPools/SampleSpark",
-				"name": "SampleSpark",
+				"id": "/subscriptions/611884b3-cca6-4214-9ec6-f90de47a3d79/resourceGroups/Trial20/providers/Microsoft.Synapse/workspaces/synapseanalytics12/bigDataPools/SampleSpark1",
+				"name": "SampleSpark1",
 				"type": "Spark",
-				"endpoint": "https://synapseanalytics12.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SampleSpark",
+				"endpoint": "https://synapseanalytics12.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/SampleSpark1",
 				"auth": {
 					"type": "AAD",
 					"authResource": "https://dev.azuresynapse.net"
@@ -83,7 +83,7 @@
 					"nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)\n",
 					"df_nyc_tlc = nyc_tlc.to_spark_dataframe()"
 				],
-				"execution_count": 2
+				"execution_count": 3
 			},
 			{
 				"cell_type": "markdown",
